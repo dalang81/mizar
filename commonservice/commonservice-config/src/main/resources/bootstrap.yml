@@ -1,0 +1,41 @@
+server: 
+  port: 8888
+spring:
+  application:
+    name: commonservice-config-server
+  profiles:
+    active: discovery,native
+  cloud:
+    config:
+      server:
+        native.searchLocations: F:/kosmos-config/config-dev
+        #git:
+          #uri: http://127.0.0.1/backend/app-config.git
+          #username: kosmos
+          #password: 123456
+          #searchPaths: config-dev
+security:
+  basic:
+    enabled: true
+  user:
+    name: kosmos
+    password: 123456
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kosmos:123456@localhost:8761/eureka/
+      kosmosZone: http://kosmos:123456@localhost:8761/eureka/
+    registry-fetch-interval-seconds: 300
+    availability-zones:
+      kosmos: kosmosZone
+  instance:
+    prefer-ip-address: true
+    metadataMap:
+      version: 1.0
+      variant: A
+      user: ${security.user.name}
+      password: ${security.user.password}
+management:
+  security:
+    enabled: false
+

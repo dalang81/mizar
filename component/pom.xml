@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.kosmos.cloud</groupId>
+	<artifactId>component</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>component</name>
+	<description>svw-ecommerce project for Spring Boot</description>
+
+	<modules>
+		<module>component-utils</module>
+		<module>component-base</module>
+		<module>component-aop-log</module>
+	</modules>
+
+	<!-- spring io 版本聚合管理应用，只是一个 pom 文件。
+		1、 有效地管理各种 jar 的依赖，避免版本之间冲突。
+		2、 按需引用，所有的 jar 都是 100%开源。
+		3、 建议 JDK7 以上版本使用 
+	-->
+	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Dalston.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		
+		<!-- 框架通用包版本设置 -->
+		<validator.version>5.3.4.Final</validator.version>
+		<shiro.version>1.2.3</shiro.version>
+
+		<!-- 通用工具包版本设置 -->
+		<slf4j.version>1.7.7</slf4j.version>
+		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-io.version>2.4</commons-io.version>
+		<commons-codec.version>1.9</commons-codec.version>
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<commons-beanutils.version>1.9.1</commons-beanutils.version>
+		<xstream.version>1.4.7</xstream.version>
+		<guava.version>17.0</guava.version>
+		<dozer.version>5.5.1</dozer.version>
+		<email.version>1.4.7</email.version>
+		<poi.version>3.9</poi.version>
+		<cglib.version>3.2.5</cglib.version>
+		
+		<!-- aliyun -->
+		<aliyun-sdk-oss.version>2.6.0</aliyun-sdk-oss.version>
+		<aliyun-sdk-openservices-ons.version>1.2.7.Final</aliyun-sdk-openservices-ons.version>
+		<aliyun-kafka-version>0.10.0.0</aliyun-kafka-version>
+		<!-- kafka -->
+		<kafka.version>0.10.2.0</kafka.version>
+        <spring-kafka.version>1.1.3.RELEASE</spring-kafka.version>
+        <spring-integration-kafka.version>2.1.0.RELEASE</spring-integration-kafka.version>
+		
+		<httpclient.version>4.5.2</httpclient.version>
+		<rocketmq.version>4.0.0-incubating</rocketmq.version>
+		<springfox.swagger.version>2.6.0</springfox.swagger.version>
+		<fastjson.version>1.2.35</fastjson.version>
+		<spring.boot.admin.version>1.5.1</spring.boot.admin.version>
+        <build-plugin.exec.version>1.4.0</build-plugin.exec.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- 单元测试 -->
+			<!-- Tomcat 如果存在就不需要将servlet-api.jar、jsp-api.jar一起打包 -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.1</version>
+				<scope>provided</scope>
+			</dependency>
+		
+			<dependency>
+				<groupId>com.kosmos.cloud</groupId>
+				<artifactId>component-base</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.kosmos.cloud</groupId>
+				<artifactId>component-utils</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+			<!-- spring cloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Dalston.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.apache.rocketmq</groupId>
+			    <artifactId>rocketmq-client</artifactId>
+			    <version>${rocketmq.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.apache.rocketmq</groupId>
+			    <artifactId>rocketmq-common</artifactId>
+			    <version>${rocketmq.version}</version>
+			</dependency>
+			<dependency>
+                <groupId>com.aliyun.openservices</groupId>
+                <artifactId>ons-client</artifactId>
+                <version>${aliyun-sdk-openservices-ons.version}</version>
+            </dependency>
+		
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${springfox.swagger.version}</version>
+			</dependency>
+	
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${springfox.swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>1.1.11</version>
+			</dependency>
+			<dependency>
+			    <groupId>com.alibaba</groupId>
+			    <artifactId>fastjson</artifactId>
+			    <version>${fastjson.version}</version>
+		    </dependency>
+            <dependency>
+	            <groupId>de.codecentric</groupId>
+	            <artifactId>spring-boot-admin-server</artifactId>
+        		<version>${spring.boot.admin.version}</version>
+	        </dependency>
+	        
+	      <!-- kafka -->
+		  <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>0.10.0.0</version>
+        </dependency>
+        <!-- kafka stream  -->
+         <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>${spring-kafka.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-kafka</artifactId>
+            <version>${spring-integration-kafka.version}</version>
+        </dependency>
+          
+      
+        <dependency>
+            <groupId>com.aliyun.openservices</groupId>
+            <artifactId>ons-sasl-client</artifactId>
+            <version>0.1</version>
+        </dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement> 
+		 <repository> 
+			<id>nexus-releases</id> 
+			<name>SX Releases</name> 
+			<url>http://192.168.0.254:8081/repository/maven-releases/</url> 
+		 </repository> 
+		 <snapshotRepository> 
+			<id>nexus-snapshots</id> 
+			<name>SX Snapshot</name> 
+			<url>http://192.168.0.254:8081/repository/maven-snapshots/</url> 
+		 </snapshotRepository> 
+	</distributionManagement>
+	
+	<build>
+		<pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${build-plugin.exec.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>	
+	</build>
+	 
+</project>

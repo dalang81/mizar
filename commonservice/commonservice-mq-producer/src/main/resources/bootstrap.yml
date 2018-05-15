@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: commonservice-mq
+  profiles: 
+    active: dev
+  cloud:
+    config:
+      discovery: 
+        enabled: true
+        service-id: commonservice-config-server
+   #rabbitmq和kafka都有相关配置的默认值，如果修改，可以再次进行配置
+   #rabbitmq:
+   #  host: localhost
+   #  port: 5672
+   #  username: guest
+   #  password: guest
+eureka: 
+  client:
+    service-url:
+      defaultZone: http://kosmos:123456@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true

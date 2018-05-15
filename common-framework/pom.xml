@@ -1,0 +1,243 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>com.kosmos.cloud.common.framework</groupId>
+    <artifactId>common-framework-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>common-framework-parent</name>
+
+	<modules>	
+		<module>common-framework-api</module>
+		<module>common-framework-service</module>
+		<module>common-framework-dao</module>
+	</modules>
+
+	<!-- spring io 版本聚合管理应用，只是一个 pom 文件。
+		1、 有效地管理各种 jar 的依赖，避免版本之间冲突。
+		2、 按需引用，所有的 jar 都是 100%开源。
+		3、 建议 JDK7 以上版本使用 
+	-->
+	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Dalston.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- spring -->
+        <springframework.version>4.3.7.RELEASE</springframework.version>
+        <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
+		<spring-cloud.version>Dalston.RELEASE</spring-cloud.version>
+        
+        <swagger2.version>2.6.1</swagger2.version>
+		
+		<!-- jdbc驱动版本设置 -->
+		<druid.version>1.0.26</druid.version>
+		<mybatisplus-spring-boot-starter.version>1.0.1</mybatisplus-spring-boot-starter.version>
+		<mysql.driver.version>5.1.37</mysql.driver.version>
+		
+        <!-- 通用工具包版本设置 -->
+		<commons-lang3.version>3.4</commons-lang3.version>
+		<guava.version>19.0</guava.version>
+		
+        <common-framework.version>1.0.0-SNAPSHOT</common-framework.version>
+        <component.version>0.0.1-SNAPSHOT</component.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+            	<groupId>com.kosmos.cloud</groupId>
+                <artifactId>component-base</artifactId>
+				<version>${component.version}</version>
+            </dependency>
+            <dependency>
+				<groupId>com.kosmos.cloud</groupId>
+				<artifactId>component-aop-log</artifactId>
+				<version>${component.version}</version>
+			</dependency>
+            <dependency>
+            	<groupId>com.kosmos.cloud</groupId>
+                <artifactId>component-utils</artifactId>
+				<version>${component.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kosmos.cloud.common.framework</groupId>
+    			<artifactId>common-framework-api</artifactId>
+                <version>${common-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kosmos.cloud.common.framework</groupId>
+    			<artifactId>common-framework-service</artifactId>
+                <version>${common-framework.version}</version>
+            </dependency>
+			<dependency>
+                <groupId>com.kosmos.cloud.common.framework</groupId>
+    			<artifactId>common-framework-dao</artifactId>
+                <version>${common-framework.version}</version>
+            </dependency>
+            
+			<!-- spring cloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-actuator</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+          
+            <!-- mysql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!-- mybatis -->
+            <dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatisplus-spring-boot-starter</artifactId>
+				<version>${mybatisplus-spring-boot-starter.version}</version>
+			</dependency>
+            <!-- database connection pool -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            
+            <!-- commons -->
+            <dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+
+            <!-- swagger -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger2.version}</version>
+			</dependency>
+			
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <compilerArgument>-parameters</compilerArgument>
+                    <compilerVersion>1.8</compilerVersion>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>${start-class}</mainClass>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <configuration>
+                        <mainClass>${start-class}</mainClass>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <configuration>
+                        <delimiters>
+                            <delimiter>${resource.delimiter}</delimiter>
+                        </delimiters>
+                        <useDefaultDelimiters>false</useDefaultDelimiters>
+                    </configuration>
+                </plugin>
+                <!-- Support our own plugin -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <mainClass>${start-class}</mainClass>
+                    </configuration>
+                </plugin>
+
+                <!-- surefire -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    
+    <distributionManagement> 
+		 <repository> 
+			<id>nexus-releases</id> 
+			<name>SX Releases</name> 
+			<url>http://192.168.0.254:8081/repository/maven-releases/</url> 
+		 </repository> 
+		 <snapshotRepository> 
+			<id>nexus-snapshots</id> 
+			<name>SX Snapshot</name> 
+			<url>http://192.168.0.254:8081/repository/maven-snapshots/</url> 
+		 </snapshotRepository> 
+	</distributionManagement>
+</project>

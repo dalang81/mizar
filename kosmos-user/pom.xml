@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.kosmos.cloud</groupId>
+	<artifactId>kosmos-user</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>kosmos-user</name>
+	<description>kosmos-ecommerce project for Spring Boot</description>
+
+	<modules>
+		<module>kosmos-user-dao</module>
+		<module>kosmos-user-service</module>
+	</modules>
+
+	<!-- spring io 版本聚合管理应用，只是一个 pom 文件。
+		1、 有效地管理各种 jar 的依赖，避免版本之间冲突。
+		2、 按需引用，所有的 jar 都是 100%开源。
+		3、 建议 JDK7 以上版本使用 
+	-->
+	<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Dalston.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- 通用工具包版本设置 -->
+		<slf4j.version>1.7.7</slf4j.version>
+		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<!-- <jackson.version>2.2.3</jackson.version> -->
+		<common.framework.version>1.0.0-SNAPSHOT</common.framework.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.kosmos.cloud</groupId>
+				<artifactId>component-base</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.kosmos.cloud</groupId>
+				<artifactId>kosmos-user-dao</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.kosmos.cloud</groupId>
+				<artifactId>kosmos-user-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+			<!-- spring cloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Dalston.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.kosmos.cloud.common.framework</groupId>
+				<artifactId>common-framework-service</artifactId>
+				<version>${common.framework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.kosmos.cloud.common.framework</groupId>
+				<artifactId>common-framework-api</artifactId>
+				<version>${common.framework.version}</version>	
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+</project>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+<parent>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-parent</artifactId>
+		<version>Dalston.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<groupId>com.kosmos.cloud</groupId>
+	<artifactId>commonservice</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>commonservice</name>
+	<description>commonservice project for Spring Boot</description>
+
+	<modules>
+		<module>commonservice-eureka</module>
+		<module>commonservice-config</module>
+		<module>commonservice-system</module>
+		<module>commonservice-mq-producer</module>
+		<module>commonservice-mq-consumer1</module>
+		<module>commonservice-mq-consumer2</module>
+		<module>commonservice-mq-consumer3</module>
+	</modules>
+
+	<!-- spring io 版本聚合管理应用，只是一个 pom 文件。
+		1、 有效地管理"pom.xml"各种 jar 的依赖，避免版本之间冲突。
+		2、 按需引用，所有的 jar 都是 100%开源。
+		3、 建议 JDK7 以上版本使用 
+	-->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		
+		<!-- 框架通用包版本设置 -->
+		<validator.version>5.3.4.Final</validator.version>
+		<shiro.version>1.2.3</shiro.version>
+		<druid.version>1.0.26</druid.version>
+
+		<!-- 通用工具包版本设置 -->
+		<slf4j.version>1.7.7</slf4j.version>
+		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<commons-io.version>2.4</commons-io.version>
+		<commons-codec.version>1.9</commons-codec.version>
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<commons-beanutils.version>1.9.1</commons-beanutils.version>
+		<fastjson.version>1.1.40</fastjson.version>
+		<xstream.version>1.4.7</xstream.version>
+		<guava.version>17.0</guava.version>
+		<dozer.version>5.5.1</dozer.version>
+		<email.version>1.4.7</email.version>
+		<poi.version>3.9</poi.version>
+		<cglib.version>3.2.5</cglib.version>
+		
+		<!-- aliyun -->
+		<aliyun-sdk-oss.version>2.6.0</aliyun-sdk-oss.version>
+		<aliyun-sdk-openservices-ons.version>1.2.7.Final</aliyun-sdk-openservices-ons.version>
+		<com.kosmos.cloud.componet.version>0.0.1-SNAPSHOT</com.kosmos.cloud.componet.version>
+		<spring-boot-admin.version>1.5.1</spring-boot-admin.version>
+		<fastjson.version>1.2.35</fastjson.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- spring cloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Dalston.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jasig.cas.client</groupId>
+				<artifactId>cas-client-core</artifactId>
+				<version>3.4.1</version>
+			</dependency>
+			<dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.5.0</version>
+            </dependency>
+	        <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui-hystrix</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui-turbine</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui-login</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+			    <groupId>de.codecentric</groupId>
+			    <artifactId>spring-boot-admin-server-ui-activiti</artifactId>
+			    <version>${spring-boot-admin.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.slf4j</groupId>
+			    <artifactId>slf4j-api</artifactId>
+			    <version>1.7.25</version>
+			</dependency>
+			<dependency>
+	            <groupId>com.kosmos.cloud</groupId>
+	            <artifactId>component-base</artifactId>
+            	<version>${com.kosmos.cloud.componet.version}</version>
+        	</dependency>
+	        <dependency>
+	           	<groupId>com.kosmos.cloud</groupId>
+	            <artifactId>component-utils</artifactId>
+	            <version>${com.kosmos.cloud.componet.version}</version>
+	        </dependency>
+	        <dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>com.alibaba</groupId>
+			    <artifactId>fastjson</artifactId>
+			    <version>${fastjson.version}</version>
+		    </dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement> 
+		 <repository> 
+			<id>nexus-releases</id> 
+			<name>SX Releases</name> 
+			<url>http://192.168.0.254:8081/repository/maven-releases/</url> 
+		 </repository> 
+		 <snapshotRepository> 
+			<id>nexus-snapshot</id> 
+			<name>SX Snapshot</name> 
+			<url>http://192.168.0.254:8081/repository/maven-snapshots/</url> 
+		 </snapshotRepository> 
+	</distributionManagement>
+</project>

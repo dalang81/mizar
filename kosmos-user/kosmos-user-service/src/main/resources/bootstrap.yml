@@ -1,0 +1,28 @@
+spring: 
+  cloud:
+    config:
+      name: kosmos-user
+      profile: dev,discoveryClient
+      discovery: 
+        enabled: true
+        service-id: commonservice-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kosmos:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      weight: 11
+logging:
+  level:
+    root: INFO
+    org.springframework.security: INFO
+
+management:
+  security:
+    enabled: false
+
+security:
+  basic:
+    enabled: false

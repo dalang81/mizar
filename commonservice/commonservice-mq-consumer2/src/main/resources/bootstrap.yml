@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: commonservice-mq
+  profiles: 
+    active: dev
+  cloud:
+    config:
+      discovery: 
+        enabled: true
+        service-id: commonservice-config-server
+     stream:
+      bindings:
+        myInput:
+          group: groupB
+eureka: 
+  client:
+    service-url:
+      defaultZone: http://kosmos:123456@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true

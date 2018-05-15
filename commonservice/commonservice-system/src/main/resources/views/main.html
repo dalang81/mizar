@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>KOSMOS</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="panel panel-default main-default">
+    <div class="mailcontent">
+    	<div class="row">
+			<div class="col-xs-12 col-sm-12 main-content">
+				<div class="col-xs-5">
+					<div class="col-xs-12 home-section-wrap yj">
+					 	<h4 class="col-xs-12">安全预警</h4>
+					 	<div class="col-xs-4">
+						 	<dl>
+						 		<dt>0</dt>
+						 		<dd>紧急事件</dd>
+						 	</dl>
+					 	</div>
+					 	<div class="col-xs-4">
+						 	<dl>
+						 		<dt>0</dt>
+						 		<dd>漏洞</dd>
+						 	</dl>
+					 	</div>
+					 	<div class="col-xs-4">
+						 	<dl>
+						 		<dt>0</dt>
+						 		<dd>攻击</dd>
+						 	</dl>
+					 	</div>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<div class="col-xs-12 home-section-wrap db">
+					 	<h4 class="col-xs-12">安全预警</h4>
+					 	<dl class="col-xs-12">
+					 		<dt>主机安全</dt>
+					 		<dd>0</dd>
+					 		<dd>件</dd>
+					 	</dl>
+					 	<dl class="col-xs-12">
+					 		<dt>WEB攻击</dt>
+					 		<dd><a href="#">网络安全</a></dd>
+					 	</dl>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="col-xs-12 home-section-wrap" id="notice-tab">
+					 	<ul class="col-xs-12 tab-tit">
+					 		<li class="on">全部公告</li><li>云产品</li><li>域名与网站</li><li>备案</li>
+					 	</ul>
+					 	<div class="col-xs-12 tab-tbody">
+					 		<ul style="display:block;">
+					 			<li><a href="#p">升级通知1</a></li>
+					 			<li><a href="#p">升级通知2</a></li>
+					 			<li><a href="#p">升级通知3</a></li>
+					 			<li class="more"><a href="#more">更多</a></li>
+					 		</ul>
+					 		<ul>
+					 			<li><a href="#p">升级通知4</a></li>
+					 			<li><a href="#p">升级通知5</a></li>
+					 			<li><a href="#p">升级通知6</a></li>
+					 			<li class="more"><a href="#more">更多</a></li>
+					 		</ul>
+					 		<ul>
+					 			<li><a href="#p">升级通知7</a></li>
+					 			<li><a href="#p">升级通知8</a></li>
+					 			<li><a href="#p">升级通知9</a></li>
+					 			<li class="more"><a href="#more">更多</a></li>
+					 		</ul>
+					 		<ul>
+					 			<li><a href="#p">升级通知A</a></li>
+					 			<li><a href="#p">升级通知B</a></li>
+					 			<li><a href="#p">升级通知C</a></li>
+					 			<li class="more"><a href="#more">更多</a></li>
+					 		</ul>
+					 	</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 scene">
+				<div class="col-xs-12 home-section-wrap">
+					<h4 class="col-xs-12">您可能关注的场景<a class="more fr">查看更多&gt;&gt;</a></h4>
+					<div class="col-xs-12">
+						<div class="img">
+							<div class="bg"></div>
+							<div class="bef">
+				              <img src="css/images/main-scene-icon.png" />
+				              <p class="line"></p>
+				              <p class="tt">解决方案</p>
+				              <a href="">立即查看</a>
+				            </div>
+						</div>
+						<div class="txt">
+							<dl>
+								<dt><a href="">解决方案</a></dt>
+								<dd class="kw">适合客户：开发企业</dd>
+								<dd class="ms">提供：开发全链路的解决方案支持，覆盖开发初始阶段架构搭建、测试、安全、加速、功能迭代各个环节</dd>
+								<dd>
+									<h5>推荐产品：</h5>
+									<div class="pro">
+										<a href="">移动推送</a>
+										<span class="tip1">推送1</span>
+										<span class="tip2">推送2</span>
+									</div>
+									<div class="pro">
+										<a href="">移动数据分析</a>
+										<span class="tip1">分析1</span>
+										<span class="tip2">分析2</span>
+									</div>
+								</dd>
+							</dl>
+							<div class="clear"></div>
+						</div>
+						<div class="see"><a href="">立即查看</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<script src="libs/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#notice-tab .tab-tit li").on("click",function(){
+		$(this).addClass("on").siblings().removeClass("on");
+		$("#notice-tab .tab-tbody ul").eq($(this).index()).show().siblings().hide();
+	});
+});
+</script>
+</body>
+</html>
