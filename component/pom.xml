@@ -65,7 +65,7 @@
 		<httpclient.version>4.5.2</httpclient.version>
 		<rocketmq.version>4.0.0-incubating</rocketmq.version>
 		<springfox.swagger.version>2.6.0</springfox.swagger.version>
-		<fastjson.version>1.2.35</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 		<spring.boot.admin.version>1.5.1</spring.boot.admin.version>
         <build-plugin.exec.version>1.4.0</build-plugin.exec.version>
 	</properties>
